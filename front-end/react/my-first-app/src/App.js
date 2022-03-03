@@ -1,14 +1,17 @@
-import logo from './logo.svg';
+
+import Alert from './Alert';
 import './App.css';
+import Badge from './Badge';
+import Message from './Message';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-       
-       
-      </header>
+    <div>
+      <h2 className="box">Test</h2>
+       <Message/>
+       <Badge caption="Inbox"/>
+       <Badge caption="Sent"/>
+       <Alert message="Sample message"></Alert>
     </div>
   );
 }
