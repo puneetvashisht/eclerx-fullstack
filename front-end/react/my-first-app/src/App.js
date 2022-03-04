@@ -1,5 +1,4 @@
 
-import Alert from './Alert';
 import './App.css';
 import Badge from './Badge';
 import Card from './Card';
@@ -13,7 +12,7 @@ function App() {
        <Badge caption="Inbox"/>
        <Badge caption="Sent"/>
        <Alert message="Sample message"></Alert>
-       <Card/>
+       <Card></Card>
     </div>
   );
 }
