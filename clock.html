@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>
+            JS Clock
+        </title>
+    </head>
+    
+    <body>
+        <h2 id="time"> </h2>
+        <script>
+
+            setInterval(()=>{
+                var today = new Date();
+                var timeStr = `Time right now is - ${today.getHours()} : ${today.getMinutes()} : ${today.getSeconds()}`
+                document.getElementById('time').innerText = timeStr;
+            }, 1000)
+           
+        </script>
+    </body>
+</html>
