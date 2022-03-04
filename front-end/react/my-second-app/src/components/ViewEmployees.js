@@ -1,22 +1,20 @@
 import React, {useState} from 'react'
 import ViewEmployeesItem from './ViewEmployeesItem';
 
-export default function ViewEmployees() {
+export default function ViewEmployees(props) {
 
-    const [employees, setEmployees] = useState([
-        {firstName: 'Ravi', lastName: 'Kumar', salary: 34334},
-        {firstName: 'Priya', lastName: 'Negi', salary: 44334},
-        {firstName: 'Nidhi', lastName: 'Arora', salary: 44334}
-    ])
+    
+    // const [employees, setEmployees] = useState(props.employees)
 
     const deleteEmployee = (index) => {
-        employees.splice(index, 1);
-        console.log(employees);
-        setEmployees([...employees]);
+        // employees.splice(index, 1);
+        // console.log(employees);
+        // setEmployees([...employees]);
     }
 
 
-    let employeeList = employees.map((employee, i) => {
+    let employeeList = props.employees.map((employee, i) => {
+        console.log(employee);
         return (
             <ViewEmployeesItem employee={employee} whenItemDeleted={deleteEmployee} index={i} key={i}/>
         )
