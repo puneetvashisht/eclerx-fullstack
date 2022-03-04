@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import DropdownItem from './DropdownItem';
 
 export default function Dropdown(props) {
 
@@ -23,7 +24,7 @@ export default function Dropdown(props) {
       setShow(false);
   }
 
-  let coursesList = courses.map((course, i) => <li><a onClick={()=>handleItemClick(course)} className="dropdown-item" href="#">{course}</a></li>);
+  let coursesList = courses.map((course, i) => <DropdownItem course={course} whenItemClicked={handleItemClick}></DropdownItem>);
   console.log(coursesList);
 
   return (
