@@ -1,0 +1,21 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Ravi",
+      "salary": 33333.33
+    },
+    {
+      "id": 2,
+      "name": "Priya",
+      "salary": 44444.44
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "text": "buy milk",
+      "completed": true
+    }
+  ]
+}
