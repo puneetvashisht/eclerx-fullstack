@@ -4,26 +4,29 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import ToastHeader from 'react-bootstrap/ToastHeader';
 import ToastBody from 'react-bootstrap/ToastBody'
+import { useParams } from 'react-router-dom';
 
-export default function AddEmployee() {
+export default function UpdateEmployee() {
 
+    let urlParams = useParams();
+    console.log(urlParams);
 
-    const [name, setName] = useState('');
+    const [name, setName] = useState(urlParams.name);
     const [salary, setSalary] = useState('');
 
     const [showA, setShowA] = useState(false);
 
     const toggleShowA = () => setShowA(!showA);
 
-    const addEmployee = () => {
+    const updateEmployee = () => {
         console.log({ name, salary });
 
-        fetch('http://localhost:8000/employees/', {
-            method: 'POST',
+        fetch('http://localhost:8000/employees/' + urlParams.id, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, salary })
+            body: JSON.stringify({salary})
         })
             .then(res => res.json())
             .then(data => {
@@ -51,19 +54,19 @@ export default function AddEmployee() {
                             <strong className="me-auto">Alert!</strong>
                             <small>11 mins ago</small>
                         </Toast.Header>
-                        <Toast.Body>Employee Added Successfully!</Toast.Body>
+                        <Toast.Body>Employee Updated Successfully!</Toast.Body>
                     </Toast>
                 </ToastContainer>
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Name</span>
-                <input onChange={(e) => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" />
+                <input disabled onChange={(e) => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Salary</span>
                 <input onChange={(e) => setSalary(e.target.value)} value={salary} type="number" className="form-control" placeholder="Enter salary" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
-            <button onClick={addEmployee} className="btn btn-primary">Add Employee</button>
+            <button onClick={updateEmployee} className="btn btn-primary">Update Employee</button>
 
         </>
     )

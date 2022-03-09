@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function ViewEmployee() {
 
@@ -50,7 +51,7 @@ export default function ViewEmployee() {
   return (
     <tr key={e.id}>
     <th scope="row">{e.id}</th>
-    <td>{e.name}</td>
+    <td><Link className="nav-link" to={`/update/${e.id}/${e.name}`}>{e.name}</Link></td>
     <td>{e.salary}</td>
     <td><button onClick={()=>deleteEmployee(e.id)} className='btn btn-danger'>  X </button></td>
     </tr>
