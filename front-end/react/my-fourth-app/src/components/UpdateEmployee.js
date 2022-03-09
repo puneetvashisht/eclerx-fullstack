@@ -12,11 +12,30 @@ export default function UpdateEmployee() {
     console.log(urlParams);
 
     const [name, setName] = useState(urlParams.name);
+    const [id, setId] = useState(urlParams.id);
     const [salary, setSalary] = useState('');
 
     const [showA, setShowA] = useState(false);
 
     const toggleShowA = () => setShowA(!showA);
+
+
+    const addEmployee = () => {
+        console.log({ name, salary });
+
+        fetch('http://localhost:8000/employees/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, salary })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setShowA(true);
+            })
+    }
 
     const updateEmployee = () => {
         console.log({ name, salary });
@@ -60,13 +79,14 @@ export default function UpdateEmployee() {
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Name</span>
-                <input disabled onChange={(e) => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" />
+                <input disabled={id} onChange={(e) => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Salary</span>
                 <input onChange={(e) => setSalary(e.target.value)} value={salary} type="number" className="form-control" placeholder="Enter salary" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
-            <button onClick={updateEmployee} className="btn btn-primary">Update Employee</button>
+            {id && <button onClick={updateEmployee} className="btn btn-primary">Update Employee</button>}
+            {!id && <button onClick={addEmployee} className="btn btn-primary">Add Employee</button>}
 
         </>
     )

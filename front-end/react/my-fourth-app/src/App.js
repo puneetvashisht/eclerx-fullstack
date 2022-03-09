@@ -19,7 +19,7 @@ function App() {
       <div className="navbar-nav">
         <Link className="nav-link" to="/">Home</Link>
         <Link className="nav-link" to="/view">View Employees</Link>
-        <Link className="nav-link" to="/add">Add Employee</Link>
+        <Link className="nav-link" to="/update">Add Employee</Link>
         <a className="nav-link disabled">Disabled</a>
       </div>
     </div>
@@ -31,7 +31,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="view" element={<ViewEmployee />} />
-        <Route path="add" element={<AddEmployee />} />
+        {/* <Route path="add" element={<AddEmployee />} /> */}
+        <Route path="update" element={<UpdateEmployee />} />
         <Route path="update/:id/:name" element={<UpdateEmployee />} />
       </Routes>
   
