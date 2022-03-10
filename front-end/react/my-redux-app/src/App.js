@@ -3,6 +3,7 @@ import './App.css';
 import AddEmployee from './components/AddEmployee'
 import ViewEmployee from './components/ViewEmployee'
 import ListEmployee from './components/ListEmployee';
+import ViewProducts from './components/ViewProducts';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <ListEmployee />
       <hr />
       <ViewEmployee></ViewEmployee>
+      <hr />
+      <ViewProducts></ViewProducts>
 
     </div>
   );
