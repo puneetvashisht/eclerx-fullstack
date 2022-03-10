@@ -1,26 +1,14 @@
 import React, {useState, useEffect} from 'react'
+import { connect } from 'react-redux';
 
 
-export default function ListEmployee() {
+function ListEmployee(props) {
 
-  const [employees, setEmployees] = useState([]);
-  const [loaded, setLoaded] = useState(false)
+  // Removed local state
+  // const [employees, setEmployees] = useState([]);
+  // const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
-    fetch('http://localhost:8000/employees/')
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        setEmployees(data);
-    })
-  
-
-
-  }, [loaded])
-
-
-
-  let employeesList = employees.map((e, i)=>
+  let employeesList = props.employees.map((e, i)=>
   {
   return (
    <li key={e.id}>{e.name}</li>
@@ -34,3 +22,14 @@ export default function ListEmployee() {
     </ol>
   )
 }
+
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+      employees: state.employeeReducer.employees
+  }
+}
+
+// connected to one single store -- that contains all state
+export default connect(mapStateToProps)(ListEmployee);

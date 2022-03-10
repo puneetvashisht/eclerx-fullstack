@@ -4,11 +4,19 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {combineReducers, createStore} from 'redux'
+import employeeReducer from './store/employee-reducer';
+import productsReducer from './store/product-reducer';
+import { Provider } from 'react-redux';
+
+  // store with reducer
+// Create a Store - state container
+const store = createStore(combineReducers({employeeReducer, productsReducer}))
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

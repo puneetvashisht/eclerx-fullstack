@@ -1,36 +1,18 @@
 import React, {useState, useEffect} from 'react'
+import { connect } from 'react-redux'
 
 
-export default function ViewEmployee() {
+function ViewEmployee(props) {
 
-  const [employees, setEmployees] = useState([]);
-  const [loaded, setLoaded] = useState(false)
+  // const [employees, setEmployees] = useState([]);
+  // const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
-    fetch('http://localhost:8000/employees/')
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        setEmployees(data);
-    })
-  
-
-
-  }, [loaded])
 
   const deleteEmployee = (id) => {
-    fetch('http://localhost:8000/employees/' + id, {
-        method: 'DELETE'
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        setLoaded(!loaded)
-    })
-   
+    props.onDeleteEmployee(id);
   }
 
-  let employeesList = employees.map((e, i)=>
+  let employeesList = props.employees.map((e, i)=>
   {
   return (
     <tr key={e.id}>
@@ -59,3 +41,19 @@ export default function ViewEmployee() {
   </table>
   )
 }
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+      employees: state.employeeReducer.employees
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onDeleteEmployee: (id) => dispatch({type: 'DELETE_EMPLOYEE', payload: {id}})
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewEmployee)

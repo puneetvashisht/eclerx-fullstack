@@ -1,31 +1,18 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
 
 
-export default function AddEmployee() {
+function AddEmployee(props) {
 
 
     const [name, setName] = useState('');
     const [salary, setSalary] = useState('');
 
-    const [showA, setShowA] = useState(false);
-
-    const toggleShowA = () => setShowA(!showA);
 
     const addEmployee = () => {
         console.log({ name, salary });
 
-        fetch('http://localhost:8000/employees/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, salary })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setShowA(true);
-            })
+        props.onAddEmployee({ name, salary })
     }
 
     return (
@@ -44,3 +31,12 @@ export default function AddEmployee() {
         </>
     )
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddEmployee: (employee) => dispatch({type: 'ADD_EMPLOYEE', payload: employee})
+    }
+  }
+
+export default connect(null, mapDispatchToProps)(AddEmployee)
