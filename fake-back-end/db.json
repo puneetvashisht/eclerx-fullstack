@@ -21,16 +21,6 @@
       "id": 5
     },
     {
-      "name": "sdgs",
-      "salary": "343434",
-      "id": 7
-    },
-    {
-      "name": "sdgs",
-      "salary": "",
-      "id": 8
-    },
-    {
       "name": "dsggsd",
       "salary": "34343",
       "id": 10
@@ -44,11 +34,6 @@
       "name": "sdsdgs",
       "salary": "444444",
       "id": 12
-    },
-    {
-      "name": "xyz",
-      "salary": "11111",
-      "id": 13
     }
   ],
   "todos": [

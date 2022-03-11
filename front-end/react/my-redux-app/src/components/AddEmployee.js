@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
+import * as actions from '../actions/employee-actions'
 
 
 function AddEmployee(props) {
 
-
     const [name, setName] = useState('');
     const [salary, setSalary] = useState('');
-
 
     const addEmployee = () => {
         console.log({ name, salary });
@@ -35,7 +34,7 @@ function AddEmployee(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddEmployee: (employee) => dispatch({type: 'ADD_EMPLOYEE', payload: employee})
+        onAddEmployee: (employee) => dispatch({type: actions.ADD_EMPLOYEE, payload: employee})
     }
   }
 
