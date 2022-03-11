@@ -34,7 +34,9 @@ function AddEmployee(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddEmployee: (employee) => dispatch({type: actions.ADD_EMPLOYEE, payload: employee})
+        // direct dispatch to reducer -- no scope for api call
+        // onAddEmployee: (employee) => dispatch({type: actions.ADD_EMPLOYEE, payload: employee})
+        onAddEmployee: (employee) => dispatch(actions.addEmployee(employee))
     }
   }
 
