@@ -31,14 +31,9 @@
       "id": 11
     },
     {
-      "name": "test",
-      "salary": "11111",
+      "name": "dsgdgs",
+      "salary": "23323",
       "id": 12
-    },
-    {
-      "name": "test",
-      "salary": "2222",
-      "id": 13
     }
   ],
   "todos": [
@@ -63,14 +58,25 @@
       "id": 4
     }
   ],
-  "login": {
-    "auth": true
+  "auth": {
+    "auth": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ"
   },
   "products": [
     {
       "name": "iPad",
       "price": 20000,
       "id": 3
+    },
+    {
+      "name": "iPad",
+      "price": 20000,
+      "id": 4
+    },
+    {
+      "name": "iPad",
+      "price": 20000,
+      "id": 5
     }
   ]
 }

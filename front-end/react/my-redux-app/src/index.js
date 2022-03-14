@@ -10,7 +10,8 @@ import productsReducer from './store/product-reducer';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-
+import { BrowserRouter } from "react-router-dom";
+import authReducer from './store/auth-reducer';
 // create a middleware
 
 
@@ -37,12 +38,14 @@ const composedEnhancer = composeWithDevTools(
 
   // store with reducer
 // Create a Store - state container
-const store = createStore(combineReducers({er:employeeReducer , pr:productsReducer}), composedEnhancer)
+const store = createStore(combineReducers({er:employeeReducer , pr:productsReducer, ar: authReducer}), composedEnhancer)
 // const store = createStore(employeeReducer, composedEnhancer)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
