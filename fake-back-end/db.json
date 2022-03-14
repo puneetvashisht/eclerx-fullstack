@@ -31,19 +31,14 @@
       "id": 11
     },
     {
-      "name": "sdsdgs",
-      "salary": "444444",
+      "name": "test",
+      "salary": "11111",
       "id": 12
     },
     {
-      "name": "TestWithRedux",
-      "salary": "22222",
+      "name": "test",
+      "salary": "2222",
       "id": 13
-    },
-    {
-      "name": "Another",
-      "salary": "44444",
-      "id": 14
     }
   ],
   "todos": [
@@ -70,5 +65,6 @@
   ],
   "login": {
     "auth": true
-  }
+  },
+  "products" : []
 }

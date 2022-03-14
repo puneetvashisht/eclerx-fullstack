@@ -37,8 +37,7 @@ const composedEnhancer = composeWithDevTools(
 
   // store with reducer
 // Create a Store - state container
-const store = createStore(combineReducers({er:employeeReducer , pr:productsReducer}), composedEnhancer)
-// const store = createStore(employeeReducer, composedEnhancer)
+const store = createStore(combineReducers({employeeReducer, productsReducer}), composedEnhancer)
 
 ReactDOM.render(
   <Provider store={store}>

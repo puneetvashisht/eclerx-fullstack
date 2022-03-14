@@ -2,7 +2,7 @@
 
 
     Team A - Ecommerce
-    - Product CRUD
+    - Product CRUD (name, description, price)
     - SPA
     - Login/Signup
 
@@ -28,7 +28,7 @@
 
     Team C - Mentor Search App
 
-    - Mentor CRUD (name, skills[])
+    - Mentor CRUD (name, skills[], experience)
     - SPA
     - Login/Signup
 

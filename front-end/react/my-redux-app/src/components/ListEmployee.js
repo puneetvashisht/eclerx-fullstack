@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
-function ListEmployee(props) {
+function ListEmployee() {
 
   // Removed local state
   // const [employees, setEmployees] = useState([]);
   // const [loaded, setLoaded] = useState(false)
 
-  let employeesList = props.employees.map((e, i)=>
+  const employees = useSelector((state) => {
+    console.log(state)
+      return state.er.employees
+    })
+
+  let employeesList = employees.map((e, i)=>
   {
   return (
    <li key={e.id}>{e.name}</li>
@@ -23,13 +28,13 @@ function ListEmployee(props) {
   )
 }
 
-
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-      employees: state.employeeReducer.employees
-  }
-}
+// use selector
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+//       employees: state.employeeReducer.employees
+//   }
+// }
 
 // connected to one single store -- that contains all state
-export default connect(mapStateToProps)(ListEmployee);
+export default ListEmployee;

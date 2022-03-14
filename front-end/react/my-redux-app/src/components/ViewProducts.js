@@ -1,31 +1,46 @@
-import React, {useState, useEffect} from 'react'
-import { connect } from 'react-redux'
-import * as actions from '../actions/product-actions'
+// 2. useSelector an useDispatch
 
-function ViewProducts(props) {
+
+import React, {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import { ADD_PRODUCT, DELETE_PRODUCT, FETCH_PRODUCTS } from '../store/product-reducer'
+
+
+function ViewProducts() {
 
   // const [employees, setEmployees] = useState([]);
   // const [loaded, setLoaded] = useState(false)
 
 
-  const deleteProduct = (id) => {
-    props.onDeleteProduct(id);
-  }
+  const products = useSelector((state) => {
+    console.log(state)
+      return state.pr.products
+    })
 
-  let productsList = props.products.map((p, i)=>
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+      console.log('Init ... View Products .... ');
+      dispatch(FETCH_PRODUCTS())
+    }, [dispatch])
+
+
+  let productsList = products.map((p, i)=>
   {
   return (
     <tr key={p.id}>
     <th scope="row">{p.id}</th>
     <td>{p.name}</td>
     <td>{p.price}</td>
-    <td><button onClick={()=>deleteProduct(p.id)} className='btn btn-danger'>  X </button></td>
+    <td><button onClick={()=>dispatch(DELETE_PRODUCT({id: p.id}))} className='btn btn-danger'>  X </button></td>
     </tr>
   )
   })
   
 
   return (
+    <>
     <table className="table">
     <thead>
       <tr>
@@ -39,21 +54,25 @@ function ViewProducts(props) {
       {productsList}
     </tbody>
   </table>
+
+  <button onClick={()=>dispatch(ADD_PRODUCT({id: 2, name: 'iPad', price: 20000}))} className='btn btn-primary'>  Add Ipad </button>
+  </>
   )
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    products: state.productsReducer.products
-  }
-}
+export default ViewProducts;
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+//     products: state.productsReducer.products
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onDeleteProduct: (id) =>  dispatch(actions.deleteProduct(id))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onDeleteProduct: (id) =>  dispatch(actions.deleteProduct(id))
+//   }
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewProducts)
+// export default connect(mapStateToProps, mapDispatchToProps)(ViewProducts)
