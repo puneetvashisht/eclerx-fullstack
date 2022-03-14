@@ -66,5 +66,11 @@
   "login": {
     "auth": true
   },
-  "products" : []
+  "products": [
+    {
+      "name": "iPad",
+      "price": 20000,
+      "id": 3
+    }
+  ]
 }

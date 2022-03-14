@@ -3,7 +3,7 @@
 
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { ADD_PRODUCT, DELETE_PRODUCT, FETCH_PRODUCTS } from '../store/product-reducer'
+import { addProduct,  deleteProduct,  fetchProducts } from '../store/product-reducer'
 
 
 function ViewProducts() {
@@ -22,7 +22,7 @@ function ViewProducts() {
 
     useEffect(() => {
       console.log('Init ... View Products .... ');
-      dispatch(FETCH_PRODUCTS())
+      dispatch(fetchProducts())
     }, [dispatch])
 
 
@@ -33,7 +33,7 @@ function ViewProducts() {
     <th scope="row">{p.id}</th>
     <td>{p.name}</td>
     <td>{p.price}</td>
-    <td><button onClick={()=>dispatch(DELETE_PRODUCT({id: p.id}))} className='btn btn-danger'>  X </button></td>
+    <td><button onClick={()=>dispatch(deleteProduct(p.id))} className='btn btn-danger'>  X </button></td>
     </tr>
   )
   })
@@ -55,7 +55,7 @@ function ViewProducts() {
     </tbody>
   </table>
 
-  <button onClick={()=>dispatch(ADD_PRODUCT({id: 2, name: 'iPad', price: 20000}))} className='btn btn-primary'>  Add Ipad </button>
+  <button onClick={()=>dispatch(addProduct({ name: 'iPad', price: 20000}))} className='btn btn-primary'>  Add Ipad </button>
   </>
   )
 }
