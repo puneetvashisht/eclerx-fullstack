@@ -10,18 +10,28 @@ const authReducer = createSlice({
     LOGIN(state, action){
       return {auth : action.payload};
     },
+    LOGOUT(state, action){
+      return {auth : false};
+    },
     SIGN_UP(state, action){
       return {auth : action.payload};
     },
   }
 })
 
-export const {LOGIN, SIGN_UP} = authReducer.actions
+export const {LOGIN, SIGN_UP, LOGOUT} = authReducer.actions
 export default authReducer.reducer
 
 
 
 const baseUrl = 'http://localhost:8000/auth/'
+
+export const logout = () =>{
+  return async(dispatch)=>{
+    localStorage.removeItem('token')
+    dispatch(LOGOUT())
+  }
+}
 
 export const login = (user) => {
     return async(dispatch) => {

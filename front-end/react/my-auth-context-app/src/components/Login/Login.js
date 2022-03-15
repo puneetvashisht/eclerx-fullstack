@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import { useAuth } from '../../context/auth';
 
 const Login = (props) => {
+
+  const {setIsAuthenticated} = useAuth();
+
   const [enteredEmail, setEnteredEmail] = useState('');
   const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState('');
@@ -37,7 +41,8 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(enteredEmail, enteredPassword);
+    // props.onLogin(enteredEmail, enteredPassword);
+    setIsAuthenticated(true);
   };
 
   return (

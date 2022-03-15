@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {Link } from "react-router-dom";
+import { logout } from '../store/auth-reducer';
 
 
 const auth = (state) => {
@@ -9,6 +10,7 @@ const auth = (state) => {
 
 export default function Header() {
 const user = useSelector(auth);
+const dispatch = useDispatch();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,11 +21,13 @@ const user = useSelector(auth);
     </button>
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
-        <Link className="nav-link" to="/">Login</Link>
+        {!user.auth &&<Link className="nav-link" to="/">Login</Link>}
         {user.auth && <Link className="nav-link" to="/view">View Employees</Link>}
         {user.auth &&  <Link className="nav-link" to="/add">Add Employee</Link>}
         {user.auth && <Link className="nav-link" to="/viewproduts">View Products</Link>}
         <a className="nav-link disabled">Disabled</a>
+        {user.auth &&<a href="#" onClick={()=>dispatch(logout())} className="nav-link">Logout</a>}
+
       </div>
     </div>
   </div>
