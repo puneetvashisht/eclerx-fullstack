@@ -4,8 +4,14 @@ import AddEmployee from './components/AddEmployee'
 import ViewEmployee from './components/ViewEmployee'
 import ListEmployee from './components/ListEmployee';
 import ViewProducts from './components/ViewProducts';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate, Outlet } from "react-router-dom";
 import Login from './components/Login/Login';
+import { useSelector } from 'react-redux';
+
+
+const auth = (state) => {
+    return state.ar.auth
+}
 
 function App() {
   return (
@@ -36,9 +42,14 @@ function App() {
 </nav>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/view" element={<ViewEmployee />} />
+
+        <Route element = {<PrivateRoute/>}>
+        < Route path="/view" element={<ViewEmployee />} />
         <Route path="add" element={<AddEmployee />} />
         <Route path="viewproduts" element={<ViewProducts />} />
+        </Route>
+        
+        
         
         {/* <Route path="update" element={<UpdateEmployee />} /> */}
         {/* <Route path="update/:id/:name" element={<UpdateEmployee />} /> */}
@@ -49,3 +60,11 @@ function App() {
 }
 
 export default App;
+
+
+function PrivateRoute(){
+  const user = useSelector(auth);
+  return (
+    <div>{user.auth ? <Outlet/> : <Navigate to="/" />}</div>
+  )
+}
