@@ -1,19 +1,11 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from '../../context/auth';
 
 import classes from './Navigation.module.css';
 
 const Navigation = () => {
 
-  const dispatch = useDispatch();
-  
-  const isAuthenticated = useSelector((state)=>{
-    return state.auth
-  })
-
-  // const {isAuthenticated, setIsAuthenticated} = useAuth();
-
+  const {isAuthenticated, setIsAuthenticated} = useAuth();
   console.log('In navigation ',  isAuthenticated);
 
   return (
@@ -31,7 +23,7 @@ const Navigation = () => {
         )}
         {isAuthenticated && (
           <li>
-            <button onClick={()=>dispatch({type: 'LOGOUT'})}>Logout</button>
+            <button onClick={()=>setIsAuthenticated(false)}>Logout</button>
           </li>
         )}
       </ul>
