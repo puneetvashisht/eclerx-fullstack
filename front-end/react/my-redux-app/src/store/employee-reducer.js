@@ -20,7 +20,7 @@ const employeeReducer = createSlice({
 })
 
 
-const baseUrl = 'http://localhost:8000/employees/'
+const baseUrl = 'http://localhost:5000/employees/'
 
 export const addEmployee = (employee) => {
     return async(dispatch) => {

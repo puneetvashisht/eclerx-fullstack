@@ -31,9 +31,9 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Login />} />
-
+        <Route path="view" element={<ViewEmployee />} />
         <Route element = {<PrivateRoute/>}>
-          <Route path="view" element={<ViewEmployee />} />
+         
           <Route path="add" element={<AddEmployee />} />
           
         </Route>
