@@ -7,9 +7,24 @@ const employees = [
     { id: 2, name: 'Priya', salary: 22222 },
     { id: 3, name: 'Anu', salary: 33333 }
 ]
+// pre req processing...
+const logMiddlware1 = (req, res, next) => {
+    console.log('Recieved request on date ' + new Date());
+    next();
+}
+
+const logMiddlware2 = (req, res, next) => {
+    console.log(req.method)
+    next();
+}
+
 // middleware that parses incoming request automatically
 app.use(express.json());
+app.use(logMiddlware1);
 
+
+
+// CRUD
 app.get('/employees', (req, res)=>{
     res.json(employees);
 })
@@ -17,14 +32,32 @@ app.get('/employees', (req, res)=>{
 app.delete('/employees/:id', (req,res)=>{
     console.log(req.params.id);
     // code for actual deletion from array
+    employees.splice(req.params.id, 1);
     res.json({success: true})
 })
 
-app.post('/employees', (req, res)=>{
+app.patch('/employees/:id', (req,res)=>{
+    console.log(req.params.id);
+    // code for actual deletion from array
+   employees.map((employee, i) => {
+       if(employee.id == req.params.id){
+           employee.salary = req.body.salary;
+       }
+   })
+
+   console.log(employees);
+   res.json(employees);
+})
+
+app.post('/employees', (req, res, next)=>{
     console.log(req.body);
     employees.push(req.body)
     res.status(201).json(employees)
+    next();
 })
+
+// post req processing...
+app.use(logMiddlware2);
 
 app.listen(3000, () => console.log('Server running on 3000 port'))
 
