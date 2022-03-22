@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/user')
 
 
+// Add the functionality for Password Comparison on Login.
+
 
 router.post('/login', async (req, res) => {
     // db and insert one course    
