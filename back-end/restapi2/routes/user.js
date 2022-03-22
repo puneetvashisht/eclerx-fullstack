@@ -3,6 +3,22 @@ const router = express.Router();
 const User = require('../models/user')
 
 
+// Missing Pieces
+// 1. signup
+//     - email validation
+//     - unique user
+//     - encoding password
+//     - jwt token
+//     - error handling
+// 2. login
+//     - decoding and compare
+//     - jwt token
+//     - error handling
+
+router.post('/signup', async (req, res) => {
+    const user = await User.create(req.body);
+    res.json(user);
+})
 
 router.post('/login', async (req, res) => {
     // db and insert one course    
