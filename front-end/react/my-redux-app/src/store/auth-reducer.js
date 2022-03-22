@@ -24,7 +24,7 @@ export default authReducer.reducer
 
 
 
-const baseUrl = 'http://localhost:8000/auth/'
+const baseUrl = 'http://localhost:5000/auth/'
 
 export const logout = () =>{
   return async(dispatch)=>{
@@ -36,7 +36,13 @@ export const logout = () =>{
 export const login = (user) => {
     return async(dispatch) => {
        
-        let response = await fetch(baseUrl);
+        let response = await fetch(baseUrl + 'login', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        });
         let data = await response.json();
         console.log(data);
 

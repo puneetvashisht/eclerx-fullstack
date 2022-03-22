@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 // create a schema
 const EmployeeSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        minLength: 3
     },
     salary: {
         type: Number

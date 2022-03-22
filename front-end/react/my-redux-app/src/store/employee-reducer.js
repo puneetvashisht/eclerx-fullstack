@@ -13,7 +13,7 @@ const employeeReducer = createSlice({
       return {employees: newEmployees};
     },
     DELETE_EMPLOYEE(state,action){
-      let filteredEmployees = state.employees.filter(e => e.id != action.payload.id)
+      let filteredEmployees = state.employees.filter(e => e._id != action.payload.id)
       return {employees: filteredEmployees};
     }
   }

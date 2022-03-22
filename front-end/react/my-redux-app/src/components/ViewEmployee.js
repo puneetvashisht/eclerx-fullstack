@@ -29,10 +29,10 @@ function ViewEmployee() {
   {
   return (
     <tr key={e.id}>
-    <th scope="row">{e.id}</th>
+    <th scope="row">{i + 1}</th>
     <td>{e.name}</td>
     <td>{e.salary}</td>
-    <td><button onClick={()=>dispatch(deleteEmployee(e.id))} className='btn btn-danger'>  X </button></td>
+    <td><button onClick={()=>dispatch(deleteEmployee(e._id))} className='btn btn-danger'>  X </button></td>
     </tr>
   )
   })
