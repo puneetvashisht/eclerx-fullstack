@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
 
-
+const authenticateUser = require('../middlewares/auth')
 // Missing Pieces
 // 1. signup
 //     - email validation
@@ -20,30 +20,9 @@ router.post('/signup', async (req, res) => {
     res.json(user);
 })
 
-router.post('/login', async (req, res) => {
-    // db and insert one course    
-   const {email, password} = req.body;
+router.post('/login', authenticateUser, async (req, res) => {
 
-   // find a record with email 
-   let user = await User.findOne({email})
-   if(!user){
-       res.json({auth: false})
-   }
-   else{
-    console.log(`${user}`.yellow);
-    // match password
-    if(user.password === password){
-        res.json({auth: true})
-    }
-    else{
-         res.json({auth: false})
-    }
-   }
-
-   
-
-   // auth : true
-
+    res.status(200).json({auth: true})
 })
 
 
