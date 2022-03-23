@@ -24,12 +24,16 @@ const baseUrl = 'http://localhost:5000/employees/'
 
 export const addEmployee = (employee) => {
     return async(dispatch) => {
+
+      let token = localStorage.getItem('token');
+    token = 'Bearer ' + token
+
        
         let response = await fetch(baseUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjM4Mzg5NjAsImlkIjoiNjBjOWM4ZDVhYmJmNjUwNmE0MzdlMzNlIiwiaWF0IjoxNjIzODM4MDYwfQ.KnUokReh1bWog9LFwrZg4uVOZk_-orbFF21JXU-Fz2g'
+                'Authorization' : token
             },
             body: JSON.stringify(employee)
         });
