@@ -7,18 +7,24 @@ const isAuthenticatedUser = async function(req, res, next){
     // console.log(req.headers);
     const token = req.headers['authorization'];
     console.log(token);
-    const tokens = token.split(' ');
+    if(token) {
+        const tokens = token.split(' ');
 
-    // verify tthe token
-    try{
-        const decodedData = jwt.verify(tokens[1], "p@ssw0rd");
-        console.log(decodedData);
-        next();
+        // verify tthe token
+        try{
+            const decodedData = jwt.verify(tokens[1], "p@ssw0rd");
+            console.log(decodedData);
+            next();
+        }
+        catch(err){
+            console.log('Error caught: ', err)
+            res.status(403).send('You are not authorized to access this data');
+        }
     }
-    catch(err){
-        console.log('Error caught: ', err)
+    else{
         res.status(403).send('You are not authorized to access this data');
     }
+    
    
 }
 

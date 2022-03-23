@@ -42,8 +42,20 @@ export const addEmployee = (employee) => {
 
 
 export const fetchEmployees = () => {
+
+    
+
     return async(dispatch) => {
-        let response = await fetch(baseUrl);
+// fetch token from local storage
+      let token = localStorage.getItem('token');
+    token = 'Bearer ' + token
+
+
+        let response = await fetch(baseUrl, {
+          headers: {
+            'Authorization' : token
+          }
+        });
         let data = await response.json();
         dispatch(FETCH_EMPLOYEES(data));
 
