@@ -1,10 +1,12 @@
 const express = require('express');
+const { isAuthenticatedUser } = require('../middlewares/auth');
 const router = express.Router();
 const Employee = require('../models/employee')
 
 
-router.get('/', async (req, res) => {
+router.get('/', isAuthenticatedUser ,async (req, res) => {
     // db and fetch all courses
+
     let employees = await Employee.find();
     res.json(employees);
 })

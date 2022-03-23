@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 // create a schema
 const UserSchema = new Schema({
     email: {
@@ -29,6 +30,14 @@ UserSchema.pre('save', async function(next){
 
 UserSchema.methods.matchPassword = async function(enteredPassword){
     return await bcrypt.compare(enteredPassword, this.password)
+}
+
+UserSchema.methods.getSignedJwtToken = function(){
+    const token = jwt.sign({id: this._id}, "p@ssw0rd", {
+        expiresIn: "30d"
+    })
+
+    return token;
 }
 
 // create model from schema
