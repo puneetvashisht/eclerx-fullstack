@@ -1,5 +1,5 @@
 const express = require('express');
-const { isAuthenticatedUser } = require('../middlewares/auth');
+const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth');
 const router = express.Router();
 const Employee = require('../models/employee')
 
@@ -12,7 +12,7 @@ router.get('/', isAuthenticatedUser ,async (req, res) => {
     res.json(employees);
 })
     
-router.post('/', async (req, res) => {
+router.post('/', [isAuthenticatedUser, authorizeRoles('admin')], async (req, res) => {
     // db and insert one course    
     let employee = await Employee.create(req.body);
     res.status(201).json(employee);

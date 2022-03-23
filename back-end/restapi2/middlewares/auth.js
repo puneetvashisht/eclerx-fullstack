@@ -14,6 +14,9 @@ const isAuthenticatedUser = async function(req, res, next){
         try{
             const decodedData = jwt.verify(tokens[1], "p@ssw0rd");
             console.log(decodedData);
+            if(decodedData.role){
+                req.role = decodedData.role
+            }
             next();
         }
         catch(err){
@@ -45,4 +48,16 @@ const authenticateUser = async function(req, res, next){
     }
 }
 
-module.exports = {authenticateUser,isAuthenticatedUser};
+
+const authorizeRoles = (...roles) => {
+    return (req, res, next)=> {
+        if(roles.includes(req.role)){
+            next();
+        }
+        else{
+            res.status(403).send('You dont have an authorized role to access')
+        }
+    }
+}
+
+module.exports = {authenticateUser,isAuthenticatedUser, authorizeRoles};

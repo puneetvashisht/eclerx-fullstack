@@ -3,10 +3,16 @@ const router = express.Router();
 const Course = require('../models/course')
 
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     // db and fetch all courses
     let courses = await Course.find();
     res.json(courses);
+})
+
+router.get('/:id', async (req, res, next) => {
+    // db and fetch all courses
+    let course = await Course.findById(req.params.id);
+    res.json(course);
 })
 
 router.post('/', async (req, res) => {

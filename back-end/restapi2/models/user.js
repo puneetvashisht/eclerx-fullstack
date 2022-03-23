@@ -15,6 +15,14 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Please add a password"],
         minLength: 6
+    },
+    role: {
+        type: String,
+        default: "user"
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
     }
 })
 
@@ -33,7 +41,7 @@ UserSchema.methods.matchPassword = async function(enteredPassword){
 }
 
 UserSchema.methods.getSignedJwtToken = function(){
-    const token = jwt.sign({id: this._id}, "p@ssw0rd", {
+    const token = jwt.sign({id: this._id, role: this.role}, "p@ssw0rd", {
         expiresIn: "30d"
     })
 
