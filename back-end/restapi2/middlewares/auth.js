@@ -17,13 +17,9 @@ const isAuthenticatedUser = async function(req, res, next){
     }
     catch(err){
         console.log('Error caught: ', err)
-        res.status(409).send('You are not authorized to access this data');
+        res.status(403).send('You are not authorized to access this data');
     }
    
-
-
-   
-
 }
 
 const authenticateUser = async function(req, res, next){

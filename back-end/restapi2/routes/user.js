@@ -20,7 +20,7 @@ router.post('/signup', async (req, res) => {
 
     const token = user.getSignedJwtToken();
 
-    res.status(201).json({token: token});
+    res.status(201).json({auth: true, token: token});
 })
 
 router.post('/login', authenticateUser, async (req, res) => {

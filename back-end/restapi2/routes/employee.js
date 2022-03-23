@@ -4,6 +4,7 @@ const router = express.Router();
 const Employee = require('../models/employee')
 
 
+// protected route on back-end
 router.get('/', isAuthenticatedUser ,async (req, res) => {
     // db and fetch all courses
 
