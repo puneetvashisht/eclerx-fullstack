@@ -8,7 +8,8 @@ const colors = require('colors')
 
 const courseRoute = require('./routes/course')
 const employeeRoute = require('./routes/employee')
-const userRoute = require('./routes/user')
+const userRoute = require('./routes/user');
+const errorhandler = require('./middlewares/errorhandler');
 
 
 // connect to db;
@@ -19,16 +20,22 @@ const connnectToDB = async () =>{
 }
 connnectToDB();
 
+// pre middleware 
 app.use(cors())
 app.use(express.json())
+
+
 app.use('/courses', courseRoute)
 app.use('/employees', employeeRoute)
 app.use('/auth', userRoute)
 
-app.get('/employee', async(req,res)=>{
-    // db and fetch all courses
-        let employees = await Employee.find();
-        res.json(employees);
-})
+
+app.use(errorhandler)
+
+// app.get('/employee', async(req,res)=>{
+//     // db and fetch all courses
+//         let employees = await Employee.find();
+//         res.json(employees);
+// })
 
 app.listen(5000, () => console.log('listening on 5000...'));

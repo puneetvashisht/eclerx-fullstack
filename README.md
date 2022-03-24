@@ -39,3 +39,12 @@ changed - by puneet
     Upendhar
     Anurag
     Jayesh
+
+
+    Coding Challenge
+
+    1. Setup & GET, POST for todos's app {text: , completed: };
+    2. Completed CRUD ( update, delete)
+    3. Integrate Authentication/Authorization
+        a. User Model -> signup (email, password)
+        b. Install bcrypt and encode password

@@ -42,7 +42,7 @@ UserSchema.methods.matchPassword = async function(enteredPassword){
 
 UserSchema.methods.getSignedJwtToken = function(){
     const token = jwt.sign({id: this._id, role: this.role}, "p@ssw0rd", {
-        expiresIn: "30d"
+        expiresIn: "30s"
     })
 
     return token;

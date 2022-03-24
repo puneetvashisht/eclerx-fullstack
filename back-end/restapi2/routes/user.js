@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
+const {signup, login, getUsers, getUser} = require('../controllers/user')
 
-const {authenticateUser} = require('../middlewares/auth')
+const {authenticateUser, isAuthenticatedUser} = require('../middlewares/auth')
 // Missing Pieces
 // 1. signup
 //     - email validation
@@ -15,22 +16,13 @@ const {authenticateUser} = require('../middlewares/auth')
 //     - jwt token
 //     - error handling
 
-router.post('/signup', async (req, res) => {
-    const user = await User.create(req.body);
+router.post('/signup', signup)
 
-    const token = user.getSignedJwtToken();
+router.post('/login', authenticateUser, login)
 
-    res.status(201).json({auth: true, token: token});
-})
+router.get('/users', isAuthenticatedUser, getUsers)
 
-router.post('/login', authenticateUser, async (req, res) => {
-
-    const user = await User.findOne({email: req.body.email})
-
-    const token = user.getSignedJwtToken();
-
-    res.status(200).json({auth: true, token: token});
-})
+router.get('/users/:id', getUser)
 
 
 

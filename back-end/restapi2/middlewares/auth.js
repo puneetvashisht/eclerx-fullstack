@@ -2,6 +2,8 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken');
 
+// const asyncHandler = require('express-async-handler')
+
 const isAuthenticatedUser = async function(req, res, next){
     // extract token for req header
     // console.log(req.headers);
@@ -21,7 +23,8 @@ const isAuthenticatedUser = async function(req, res, next){
         }
         catch(err){
             console.log('Error caught: ', err)
-            res.status(403).send('You are not authorized to access this data');
+            // res.status(403).send('You are not authorized to access this data');
+            next(err);
         }
     }
     else{
