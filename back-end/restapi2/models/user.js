@@ -52,3 +52,23 @@ UserSchema.methods.getSignedJwtToken = function(){
 const User = mongoose.model('User', UserSchema)
 
 module.exports = User;
+
+
+// class Person{
+//     constructor(id, name, salary){
+//         //fields
+//         this.id = id;
+//         this.name = name;
+//         this.salary = salary;
+//     }
+
+//     //methods
+//     incrementSalary(){
+//         this.salary += 3434;
+//     }
+
+// }
+
+
+// let person1 = new Person(12, 'Ravi', 34343)
+

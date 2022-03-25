@@ -8,6 +8,7 @@ const colors = require('colors')
 
 const courseRoute = require('./routes/course')
 const employeeRoute = require('./routes/employee')
+const taskRoute = require('./routes/task')
 const userRoute = require('./routes/user');
 const errorhandler = require('./middlewares/errorhandler');
 
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use('/courses', courseRoute)
 app.use('/employees', employeeRoute)
 app.use('/auth', userRoute)
+app.use('/tasks', taskRoute)
 
 
 app.use(errorhandler)

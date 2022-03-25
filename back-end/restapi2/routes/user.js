@@ -20,7 +20,7 @@ router.post('/signup', signup)
 
 router.post('/login', authenticateUser, login)
 
-router.get('/users', isAuthenticatedUser, getUsers)
+router.get('/users', getUsers)
 
 router.get('/users/:id', getUser)
 

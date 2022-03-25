@@ -1,12 +1,15 @@
 const express = require('express');
+const advancedQuery = require('../middlewares/advanced-query');
 const router = express.Router();
 const Course = require('../models/course')
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', advancedQuery(Course), async (req, res, next) => {
     // db and fetch all courses
-    let courses = await Course.find();
-    res.json(courses);
+    // let courses = await Course.find();
+    // res.json(courses);
+    console.log(res.advancedQueryResult);
+    res.status(200).json(res.advancedQueryResult);
 })
 
 router.get('/:id', async (req, res, next) => {

@@ -48,3 +48,13 @@ changed - by puneet
     3. Integrate Authentication/Authorization
         a. User Model -> signup (email, password)
         b. Install bcrypt and encode password
+        c. Bcrypt - Verify ecrypted password.. on login method.. use it as middleware
+        d. Generate token in login method.. using jsonwebtoken library.
+        e. verify token
+    4. Implement basic error handler
+
+    Missing
+        - Structuring.. 
+        - Mongoose features ( sort, limit, select, search)
+        - Config [port, mongodbport]
+        - File upload
