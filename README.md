@@ -54,7 +54,10 @@ changed - by puneet
     4. Implement basic error handler
 
     Missing
-        - Structuring.. 
+        - Structuring.. (routes, controllers, models, middleware)
         - Mongoose features ( sort, limit, select, search)
+
+
+        
         - Config [port, mongodbport]
         - File upload
