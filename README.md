@@ -61,3 +61,5 @@ changed - by puneet
         
         - Config [port, mongodbport]
         - File upload
+        - Pagination
+        - Forgot password
