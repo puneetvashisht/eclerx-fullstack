@@ -7,6 +7,8 @@ const advancedQuery = (model) => expressAsyncHandler( async(req, res, next) => {
     if(req.query.select){
         let fields = req.query.select.split(',').join(' ')
         query = query.select(fields)
+        // query.select('title desc')
+        // query.select('title,desc')
     }
 
     console.log('after select...');

@@ -15,6 +15,52 @@ exports.signup = async(req, res, next) => {
      })
  
  }
+exports.uploadProfilePic = async(req, res, next) => {
+
+    console.log(" Inside upload profile pic ", req.id);
+
+    if(req.files && Object.keys(req.files).length !== 0){
+
+        console.log("req.files" , req.files)
+        // uploaded move to directory
+
+        const uploadedFile = req.files.uploadFile;
+
+        console.log(uploadedFile)
+        console.log(__dirname);
+
+        const uploadPath = '/Users/puneet/work/trainings/eclerx-fullstack/back-end/restapi3/uploads/' + req.id + '.png';
+
+        console.log(uploadPath);
+        // Saving file
+
+        uploadedFile.mv(uploadPath, function(err){
+            if(err){
+                console.log(err);
+                res.send("Failed!!!")
+            }else{
+                res.send("Successfully Uploaded")
+            }
+        })
+    }
+
+    else{
+        res.send("No File to upload !!")
+    }
+
+    
+ 
+ }
+exports.downloadProfilePic = async(req, res, next) => {
+
+    console.log(" Inside upload profile pic ", req.id);
+
+    res.download('/Users/puneet/work/trainings/eclerx-fullstack/back-end/restapi3/uploads/' + req.id + '.png')
+
+    
+ 
+ }
+ 
 
  exports.login = async(req, res, next) => {
 

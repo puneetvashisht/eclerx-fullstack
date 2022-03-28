@@ -18,6 +18,7 @@ const isAuthenticatedUser = async function(req, res, next){
             console.log(decodedData);
             if(decodedData.role){
                 req.role = decodedData.role
+                req.id = decodedData.id
             }
             next();
         }
