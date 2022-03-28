@@ -28,7 +28,27 @@ const UserSchema = new Schema({
     }
 })
 
+UserSchema.pre('save', async function(next){
+    if(!this.isModified('password')){
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt)
 
+})
+
+
+UserSchema.methods.matchPassword = async function(enteredPassword){
+    return await bcrypt.compare(enteredPassword, this.password)
+}
+
+UserSchema.methods.getSignedJwtToken = function(){
+    const token = jwt.sign({id: this._id, role: this.role}, "p@ssw0rd", {
+        expiresIn: "30d"
+    })
+
+    return token;
+}
 
 
 

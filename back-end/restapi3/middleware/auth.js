@@ -1,0 +1,66 @@
+
+const User = require('../models/user')
+const jwt = require('jsonwebtoken');
+
+// const asyncHandler = require('express-async-handler')
+
+const isAuthenticatedUser = async function(req, res, next){
+    // extract token for req header
+    // console.log(req.headers);
+    const token = req.headers['authorization'];
+    console.log(token);
+    if(token) {
+        const tokens = token.split(' ');
+
+        // verify tthe token
+        try{
+            const decodedData = jwt.verify(tokens[1], "p@ssw0rd");
+            console.log(decodedData);
+            if(decodedData.role){
+                req.role = decodedData.role
+            }
+            next();
+        }
+        catch(err){
+            console.log('Error caught: ', err)
+            // res.status(403).send('You are not authorized to access this data');
+            next(err);
+        }
+    }
+    else{
+        res.status(403).send('You are not authorized to access this data');
+    }
+    
+   
+}
+
+// const authenticateUser = async function(req, res, next){
+//     const user = await User.findOne({email: req.body.email})
+//     console.log(user);
+
+//     if(user){
+//         // Match the password
+//         const isMatch = await user.matchPassword(req.body.password)
+//         if(isMatch){
+//             next();
+//         }else{
+//             res.status(401).send("Invalid Password")
+//         }
+//     }else{
+//         res.status(404).send("Invalid credentials")
+//     }
+// }
+
+
+const authorizeRoles = (...roles) => {
+    return (req, res, next)=> {
+        if(roles.includes(req.role)){
+            next();
+        }
+        else{
+            res.status(403).send('You dont have an authorized role to access')
+        }
+    }
+}
+
+module.exports = {isAuthenticatedUser, authorizeRoles};
