@@ -3,6 +3,7 @@ const express = require('express');
 require('dotenv').config({path: './config/config.env'})
 const connectDatabase = require('./config/database');
 const app = express();
+const cors = require('cors')
 
 const product = require('./routes/productRoute');
 const user = require('./routes/userRoute');
@@ -14,6 +15,7 @@ console.log(process.env.PORT);
 //connect to database
 connectDatabase();
 
+app.use(cors())
 app.use(express.json())
 app.use(fileUpload())
 app.use('/photos', express.static('uploads'))
