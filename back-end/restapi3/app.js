@@ -19,7 +19,7 @@ app.use('/photos', express.static('uploads'))
 
 
 
-// app.use("/api/v1", product);
+app.use("/api/v1/products", product);
 app.use("/api/v1/users", user)
 
 

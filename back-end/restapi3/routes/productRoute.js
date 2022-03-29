@@ -1,18 +1,20 @@
 const express = require('express');
 const { getAllProducts, createProduct, assignUser, addReviewToProduct } = require('../controllers/product');
+const advancedQuery = require('../middleware/advanced-query');
 const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
+const product = require('../models/product');
 const router = express.Router();
 
 
-router.route('/products')
-.get(getAllProducts)
+router.route('/')
+.get(advancedQuery(product), getAllProducts)
 .post([isAuthenticatedUser, authorizeRoles('admin', 'creator')],createProduct)
 
 
-router.route(isAuthenticatedUser,'/products/:productid/assign')
+router.route(isAuthenticatedUser,'/:productid/assign')
 .patch(isAuthenticatedUser,assignUser)
 
-router.route('/products/:productid/review')
+router.route('/:productid/review')
 .post(isAuthenticatedUser,addReviewToProduct)
 
 

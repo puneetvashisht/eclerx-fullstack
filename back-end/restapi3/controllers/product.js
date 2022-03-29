@@ -3,13 +3,10 @@ const Product = require('../models/product')
 
 exports.getAllProducts = async(req, res, next) => {
 
-   const products = await Product.find();
+//    const products = await Product.find();
 //    res.json(products)
 
-    res.status(200).json({
-        success: true,
-        data: products 
-    })
+    res.status(200).json(res.advancedQueryResult)
 
 }
 
