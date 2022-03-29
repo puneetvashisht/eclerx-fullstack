@@ -141,3 +141,7 @@ exports.downloadProfilePic = async(req, res, next) => {
  exports.getAllUsers = async(req, res, next) => {
         res.status(200).json(res.advancedQueryResult) 
  }
+ exports.getUser = async(req, res, next) => {
+        const user = await User.findById(req.params.userid)
+        res.status(200).json(user) 
+ }

@@ -1,5 +1,5 @@
 const express = require('express');
-const { signup, login , uploadProfilePic,downloadProfilePic, getAllUsers, forgotPassword, resetPassword} = require('../controllers/user');
+const { signup, login , uploadProfilePic,downloadProfilePic, getAllUsers, forgotPassword, resetPassword, getUser} = require('../controllers/user');
 const advancedQuery = require('../middleware/advanced-query');
 const { isAuthenticatedUser } = require('../middleware/auth');
 const User = require('../models/user');
@@ -8,6 +8,9 @@ const router = express.Router();
 
 router.route('/')
 .get(advancedQuery(User), getAllUsers)
+
+router.route("/:userid")
+.get(getUser)
 
 router.route("/register")
 .post(signup)

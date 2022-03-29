@@ -6,7 +6,8 @@ const app = express();
 
 const product = require('./routes/productRoute');
 const user = require('./routes/userRoute');
-const fileUpload = require('express-fileupload')
+const fileUpload = require('express-fileupload');
+const User = require('./models/user');
 
 console.log(process.env.PORT);
 
@@ -17,7 +18,17 @@ app.use(express.json())
 app.use(fileUpload())
 app.use('/photos', express.static('uploads'))
 
+app.set('view engine', 'pug')
+app.set('views', './views')
 
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Hey', message: 'Hello there!' })
+  })
+
+  app.get('/user/:userid', async(req, res) => {
+    const user = await User.findById(req.params.userid)
+    res.render('user', { title:'User Details Page ',  email: user.email, role: user.role })
+  })
 
 app.use("/api/v1/products", product);
 app.use("/api/v1/users", user)
