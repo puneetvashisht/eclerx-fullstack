@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@angular/cli": "^13.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
   }
 }
