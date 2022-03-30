@@ -37,6 +37,7 @@ export const fetchEmployees = () => {
     // fetch token from local storage
 
     let response = await globalFetch(baseUrl, "GET");
+    
     let data = await response.json();
     console.log("data", data);
     dispatch(FETCH_EMPLOYEES(data));

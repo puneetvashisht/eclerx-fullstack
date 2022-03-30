@@ -17,7 +17,7 @@ changed - by puneet
 
     Team B - Workout App
 
-    - Workout CRUD (title, description, duration)
+    - Workout CRUD (title, description, duration, cbpm)
     - SPA
     - Login/Signup
 
@@ -63,3 +63,31 @@ changed - by puneet
         - File upload
         - Pagination
         - Forgot password
+
+    NodeJS + Mongoose
+
+    Scoping 
+        - Basic features 
+    
+    Modeling
+        - Only mandatory fields 
+        - Relationships (embed, linked)
+    
+    Skeleton/Structure for Backend
+        - Layers
+        - Common utils: .evn, cors, debug, config, db connectivity, middleware
+    
+    Rest APIs - create routes
+    Testing Rest API : Postman
+
+
+    React + Redux
+
+    Skeleton/Structure 
+        - Layers
+        - Style/Theme 
+
+
+
+
+
