@@ -1,13 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'app-badge',
-    template:`
-    <button type="button" class="btn btn-primary">
-        Notifications <span class="badge bg-secondary">4</span>
-    </button>
-    `
+    templateUrl: './badge.component.html'
 })
 export class BadgeComponent{
+    // fields
+    count: number = 0
+    @Input('caption') caption : string = 'Inbox'
+
+    // methods
+    incrementCount(){
+        console.log(this.count)
+        this.count++;
+    }
 
 }
