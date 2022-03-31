@@ -9,10 +9,12 @@ import { CardComponent } from './components/card/card.component';
 import { ViewCoursesComponent } from './components/view-courses/view-courses.component';
 import { ParentComponent } from './components/parent/parent.component';
 import { ChildComponent } from './components/child/child.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MessageComponent, BadgeComponent, ViewEmployeesComponent, CardComponent, ViewCoursesComponent, ParentComponent, ChildComponent
+    AppComponent, MessageComponent, BadgeComponent, ViewEmployeesComponent, CardComponent, ViewCoursesComponent, ParentComponent, ChildComponent, DropdownComponent, DropdownItemComponent
   ],
   imports: [
     BrowserModule
