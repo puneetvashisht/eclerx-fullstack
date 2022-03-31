@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BadgeComponent } from './components/badge.component';
 import { MessageComponent } from './components/message.component';
+import { ViewEmployeesComponent } from './components/view-employees/view-employees.component';
 import { CardComponent } from './components/card/card.component';
-import { Card3Component } from './components/card3/card3.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MessageComponent, BadgeComponent, CardComponent, Card3Component
+    AppComponent, MessageComponent, BadgeComponent, ViewEmployeesComponent, CardComponent
   ],
   imports: [
     BrowserModule
