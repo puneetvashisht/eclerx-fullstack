@@ -7,10 +7,12 @@ import { MessageComponent } from './components/message.component';
 import { ViewEmployeesComponent } from './components/view-employees/view-employees.component';
 import { CardComponent } from './components/card/card.component';
 import { ViewCoursesComponent } from './components/view-courses/view-courses.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/child/child.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MessageComponent, BadgeComponent, ViewEmployeesComponent, CardComponent, ViewCoursesComponent
+    AppComponent, MessageComponent, BadgeComponent, ViewEmployeesComponent, CardComponent, ViewCoursesComponent, ParentComponent, ChildComponent
   ],
   imports: [
     BrowserModule
