@@ -13,5 +13,10 @@ export class AppComponent {
     {firstName: "Harshit", lastName: "Tomar", salary: 34434}
   ]
 
+  courses : Array<any> = [
+    {title: 'Angular', summary: 'framework from google!'},
+    {title: 'React', summary: 'library from facebook!'}
+  ]
+
 
 }
