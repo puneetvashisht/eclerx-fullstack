@@ -1,0 +1,13 @@
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Id</span>
+    <input type="text" #id (keyup)="0" class="form-control" placeholder="Enter id" aria-label="Username" aria-describedby="basic-addon1">
+
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Salary</span>
+    <input type="number" #salary (keyup)="0" class="form-control" placeholder="Enter Salary" aria-label="Username" aria-describedby="basic-addon1">
+ 
+  </div>
+
+  <button class="btn btn-primary" (click)="updateEmployee(id.value, salary.value)">Update Employee</button>
