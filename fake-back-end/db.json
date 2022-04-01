@@ -26,14 +26,14 @@
       "id": 10
     },
     {
-      "name": "sdsdf",
-      "salary": "34434",
-      "id": 11
+      "name": "Priya",
+      "salary": 33333,
+      "id": 12
     },
     {
-      "name": "dsgdgs",
-      "salary": "23323",
-      "id": 12
+      "name": "Harshit",
+      "salary": 16000,
+      "id": 13
     }
   ],
   "todos": [
